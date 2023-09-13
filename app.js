@@ -4,12 +4,15 @@
 const names = require("./modulesBasic");
 const SayHi = require("./utils");
 const data = require("./alternativeModuleExport");
+
+require("./mind-grenade");
+
 // console.log("🚀 - data:", data);
 // data: { items: [ 'item1', 'item2' ], singlePerson: { name: 'vishal' } }
 
 // console.log("🚀 - names:", names);
 // names: { AuthorFirstName: 'Vishal', AuthorLastName: 'Thakur' }
 
-SayHi("Vishal");
-SayHi(names.AuthorFirstName);
-SayHi(names.AuthorLastName);
+// SayHi("Vishal");
+// SayHi(names.AuthorFirstName);
+// SayHi(names.AuthorLastName);
