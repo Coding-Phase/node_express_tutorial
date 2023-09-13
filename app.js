@@ -1,11 +1,11 @@
 // CommonJs, every file is module (by default)
 // Modules - Encapsulated Code (only share minimum)
 
-const AuthorName = "Thakur";
+const names = require("./modulesBasic");
+const SayHi = require("./utils");
+// console.log("🚀 - names:", names);
+// names: { AuthorFirstName: 'Vishal', AuthorLastName: 'Thakur' }
 
-const sayHi = (name) => {
-	console.log(`Hello there ${name}`);
-};
-
-sayHi("Vishal");
-sayHi(AuthorName);
+SayHi("Vishal");
+SayHi(names.AuthorFirstName);
+SayHi(names.AuthorLastName);
