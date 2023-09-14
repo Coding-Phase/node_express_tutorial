@@ -1,30 +1,19 @@
-const { readFile, writeFile } = require("fs");
+const http = require("http");
 
-// callback
-readFile("./content/first.txt", "utf8", (err, result) => {
-	if (err) {
-		console.log(err);
-		return;
+const server = http.createServer((req, res) => {
+	if (req.url === "/") {
+		res.write("Welcome to our home page");
+	} else if (req.url === "/about") {
+		res.write("This is our about page");
+	} else {
+		res.write(`
+            <h1>Oops!</h1>
+            <p>We can't seem to find the page you are looking for</p>
+            <a href="/">back home</a>
+        `);
 	}
-	const first = result;
-	readFile("./content/second.txt", "utf8", (err, result) => {
-		if (err) {
-			console.log(err);
-			return;
-		}
-		const second = result;
 
-		// if third-sync.txt not present create one otherwise append to it
-		writeFile(
-			"./content/third-sync.txt",
-			`Here is the result: ${first}, ${second}`,
-			(err, result) => {
-				if (err) {
-					console.log(err);
-					return;
-				}
-				console.log(result);
-			}
-		);
-	});
+	res.end(); // Call res.end() once at the end of the request.
 });
+
+server.listen(8080);
